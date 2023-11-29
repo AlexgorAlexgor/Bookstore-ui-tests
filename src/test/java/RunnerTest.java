@@ -4,7 +4,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Categories.class)
 @Categories.IncludeCategory(Smoke.class)
-@Suite.SuiteClasses({LoginTest.class,SideBarTest.class})
+@Suite.SuiteClasses({LoginTest.class,RegistrationTest.class})
+//@Suite.SuiteClasses({LoginTest.class,RegistrationTest.class,SideBarTest.class})
 
 public class RunnerTest extends BaseTest {
 

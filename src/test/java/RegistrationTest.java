@@ -73,7 +73,7 @@ public class RegistrationTest extends BaseTest {
         registerForm.enterPasswordField("");
         registerForm.clickRegisterButton();
 
-        registerForm.getUserNameField().getValue().isEmpty();
+        registerForm.getPasswordField().getValue().isEmpty();
     }
 
     @Test
