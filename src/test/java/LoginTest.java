@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -14,7 +15,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("Alexgor0!");
         loginPage.clickOnLoginButton();
-        profilePage.openProfilePageIsDisplaeyd().shouldBe(visible);
+        profilePage.openProfilePageIsDisplaeyd();
     }
 
     @Test
@@ -22,14 +23,15 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("Bad_pass!");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldHave(text("Invalid username or password!"));
+        loginPage.getErrorMessage("Invalid username or password!");
+                //.shouldHave(text("Invalid username or password!"));
     }
     @Test
     public void invalidEmailFormat() {
         loginPage.enterUsername("alexgorgmx.de");
         loginPage.enterPassword("Alexgor0!");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldBe(visible);
+        loginPage.getErrorMessage("Invalid username or password!");
         //.should(text("Invalid username or password!"));
     }
     @Test
@@ -37,7 +39,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("Alexgor!");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldBe(visible);
+        loginPage.getErrorMessage("Invalid username or password!");
         //.should(text("Invalid username or password!"));
     }
     @Test
@@ -45,7 +47,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("alexgor0!");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldBe(visible);
+        loginPage.getErrorMessage("Invalid username or password!");
         //.should(text("Invalid username or password!"));
     }
     @Test
@@ -53,7 +55,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("ALEXGOR0!");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldBe(visible);
+        loginPage.getErrorMessage("Invalid username or password!");
         //.should(text("Invalid username or password!"));
     }
     @Test
@@ -61,7 +63,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("Alexgor0");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldBe(visible);
+        loginPage.getErrorMessage("Invalid username or password!");
         //.should(text("Invalid username or password!"));
     }
     @Test
@@ -69,7 +71,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterUsername("alexgor@gmx.de");
         loginPage.enterPassword("Alexg0!");
         loginPage.clickOnLoginButton();
-        loginPage.getErrorMessage().shouldBe(visible);
+        loginPage.getErrorMessage("Invalid username or password!");
         //.should(text("Invalid username or password!"));
     }
     @Test

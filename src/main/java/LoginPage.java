@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.id;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.Assert.assertTrue;
@@ -17,22 +16,25 @@ public class LoginPage {
     private SelenideElement passwordField = $("[placeholder=\"Password\"]");
     private SelenideElement loginButton = $(byId("login"));
 
-
+    // private  SelenideElement alertError=$(By.className("mb-1"));
+    private  SelenideElement alertError=$(By.xpath("mt-4 row"));
+   // private  SelenideElement alertError=$(By.id("output"));
+    private  SelenideElement alertEmptyField=$(byCssSelector("mr-sm-2 is-invalid form-control"));
+    private SelenideElement loginMessage=$(byTagName("h5"));
 //private SelenideElement loginButton=$(byAttribute())
 
 
     //private SelenideElement alertError=$(byId("output"));
-    private  SelenideElement alertError=$(byClassName("col-md-12"));
-    public SelenideElement getErrorMessage() {
-        return alertError;
+
+    public SelenideElement getErrorMessage(String alertErrorMessage) {
+        return alertError.shouldHave(text(alertErrorMessage));
     }
 
-    private  SelenideElement alertEmptyField=$(byCssSelector("mr-sm-2 is-invalid form-control"));
     public SelenideElement getEmptyFieldMessage() {
         return alertEmptyField;
     }
 
-    private SelenideElement loginMessage=$(byTagName("h5"));
+
     //Login in Book Store
     public SelenideElement getLoginMessage() {
         return loginMessage;
@@ -97,9 +99,4 @@ public class LoginPage {
     }
 
     public SelenideElement visibleLoginButton() {return loginButton;}
-
-
-    //   public void linkedInLinkIsCorrect(){
-    //    assertTrue(WebDriverRunner.getWebDriver().getCurrentUrl().contains("linkedin.com"));
-   // }
 }
